@@ -1,4 +1,8 @@
 import datetime
+from instructor_def import Instructor
+from student_def import Student
+from course_def import Course
+from course_offering_def import CourseOffering
 
 class Institution:
     def __init__(self, name, domain): #adding a domain to constructor, since there is no standard method you can build for it

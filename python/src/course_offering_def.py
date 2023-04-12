@@ -1,4 +1,5 @@
 import datetime
+from student_def import Student
 
 class CourseOffering:
     def __init__(self, course, section_number, year, quarter):
