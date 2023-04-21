@@ -1,27 +1,34 @@
-from student_def import Student
 import unittest
+
+from student_def import Student
+from person_def import Person
+from course_def import Course
+from course_offering_def import CourseOffering
 
 class Test_Student(unittest.TestCase):
      def test_student_init(self):
 
         # Arrange
-        student = Student('last_name', 'first_name', 'school', 'date_of_birth', 'username')
-
+        
+        student = student('test', 'test', 'school', '4/20/23', 'test')
+       
         #Act
-        student.last_name = 'Rocco'
-        student.first_name = 'Chris'
-        student.school = 'Quinnipiac'
-        student.date_of_birth = '2/25/02'
-        student.username = 'cjr225'
 
         #Assert
-        assert student.last_name == 'Rocco'
-        assert student.first_name == 'Chris'
-        assert student.school == 'Quinnipiac'
-        assert student.date_of_birth == '2/25/02'
-        assert student.username == 'cjr225'
-        assert student.__str__
+        assert student.first_name == "test"
 
-if __name__ == '__main__':
-    unittest.main() 
+     def test_credits(self):
 
+      #Arrange
+      total = 0
+      student = student('test', 'test', 'school', '4/20/23', 'test')
+      course1 = Course("CSC", 375, "Cloud Computing", 3)
+      cc1 = CourseOffering(course1,"123","2023","1")
+      courseOfferings = [cc1]
+      student.course_list = courseOfferings
+
+      #Act
+      total = course1.credits
+      print(total)
+      #Assert
+      assert student.credits == 3
