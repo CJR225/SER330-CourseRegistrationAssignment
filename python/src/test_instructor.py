@@ -1,26 +1,76 @@
-import unittest
 
+import pytest
 from instructor_def import Instructor
-from person_def import Person
 from course_def import Course
 from course_offering_def import CourseOffering
 
-class Test_Instructor(unittest.TestCase):
+def test_List_Courses_WhenNoFiltersPresent_ReturnsCompleteList():
 
-    def test_InstructorInit_WhenAllConditionsAreMet_Succeeds(self):
+    # Arrange
+    # Need Instructor
+    instructor = Instructor("Last Name", "First Name", "Quinnipiac University", "4/20/2023", "test")
+    course = Course("Computer Science", 1234, "Test Class", 3)
+    courseOffering1 = CourseOffering(course, "123", "2023", "1")
+    courseOffering2 = CourseOffering(course, "123", "2023", "1")
+    courseOfferingList = [courseOffering1, courseOffering2]
+    instructor.course_list = courseOfferingList
 
-        #Arrange
-        instructor = Instructor("test","test","test","4/20/23","test")
-        course = Course("CSC", 375, "Cloud Computing", 3)
-        cc1 = CourseOffering(course,"123","2023","1")
-        cc2 = CourseOffering(course,"123","2023","1")
-        cc3 = CourseOffering(course,"123","2023","1")
-        courseOfferingsList = [cc1,cc2,cc3]
-        instructor.course_list = courseOfferingsList
+    # Act
+    returnedCourses = instructor.list_courses()
 
-        #Act
-        returnedCourses = instructor.list_courses()
+    # Assert
+    assert len(returnedCourses) == len(courseOfferingList)
 
-        #Assert
-        assert len(returnedCourses) == len(courseOfferingsList)
-   
+def test_List_Courses_WithYearFilter_ReturnsCompleteList():
+
+    # Arrange
+    # Need Instructor
+    instructor = Instructor("Last Name", "First Name", "Quinnipiac University", "4/20/2023", "test")
+    course = Course("Computer Science", 1234, "Test Class", 3)
+    courseOffering1 = CourseOffering(course, "123", "2023", "1")
+    courseOffering2 = CourseOffering(course, "123", "2023", "1")
+    courseOfferingList = [courseOffering1, courseOffering2]
+    instructor.course_list = courseOfferingList
+
+    # Act
+    #returnedCourses = instructor.list_courses()
+    #returnedCourses = instructor.list_courses(quarter=2)
+    returnedCourses = instructor.list_courses(year="2023")
+    #returnedCourses = instructor.list_courses(year=2023, quarter=1)
+
+    # Assert
+    assert len(returnedCourses) == len(courseOfferingList)
+
+def test_List_Courses_WithQuarterFilter_ReturnsCompleteList():
+
+    # Arrange
+    # Need Instructor
+    instructor = Instructor("Last Name", "First Name", "Quinnipiac University", "4/20/2023", "test")
+    course = Course("Computer Science", 1234, "Test Class", 3)
+    courseOffering1 = CourseOffering(course, "123", "2023", "1")
+    courseOffering2 = CourseOffering(course, "123", "2023", "1")
+    courseOfferingList = [courseOffering1, courseOffering2]
+    instructor.course_list = courseOfferingList
+
+    # Act
+    returnedCourses = instructor.list_courses(quarter="1")
+
+    # Assert
+    assert len(returnedCourses) == len(courseOfferingList)
+
+def test_List_Courses_WithQuarterFilter_ReturnsNoData():
+
+        # Arrange
+        # Need Instructor
+        instructor = Instructor("Last Name", "First Name", "Quinnipiac University", "4/20/2023", "test")
+        course = Course("Computer Science", 1234, "Test Class", 3)
+        courseOffering1 = CourseOffering(course, "123", "2023", "1")
+        courseOffering2 = CourseOffering(course, "123", "2023", "1")
+        courseOfferingList = [courseOffering1, courseOffering2]
+        instructor.course_list = courseOfferingList
+
+        # Act
+        returnedCourses = instructor.list_courses(quarter="2")
+
+        # Assert
+        assert len(returnedCourses) == 0
