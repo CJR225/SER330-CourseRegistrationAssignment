@@ -11,6 +11,7 @@ class TestInstitution(unittest.TestCase):
 
     def test_VerifyRegisterStudenForCourse_WhenAllConditionsMet():
 
+        #This test case is from class example, and worked when demonstrated in class but does not work on my machine
     
     # Arrange
     # Define a course and a course offering
