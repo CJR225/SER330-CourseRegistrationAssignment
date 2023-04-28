@@ -42,3 +42,4 @@ class TestCourseOffering(unittest.TestCase):
         
         #Is the value of this grade a B?
         assert cc.grades.get("userName") == 'B'
+

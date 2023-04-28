@@ -44,3 +44,13 @@ def test_VerifyRegisterStudenForCourse_WhenAllConditionsMet():
 
     # Assert
     assert len(courseOffering.registered_students) == 1
+
+def test_list_students(self):
+
+    studentList = ["Chris","Bob","Joe"]
+    self.assertItsInstance(studentList,list)
+
+def test_list_instructors(self):
+
+    instructorList = ["Christian","Ruby","Bill"]
+    self.assertItsInstance(instructorList,list)
