@@ -49,21 +49,27 @@ class TestInstitution(unittest.TestCase):
         assert len(courseOffering.registered_students) == 1
 
     def test_list_students(self):
-
+        #Arrange
         studentList = ["Chris","Bob","Joe"]
+        #Assert
         self.assertIsInstance(studentList,list)
 
     def test_list_instructors(self):
 
+        #Arrange
         instructorList = ["Christian","Ruby","Bill"]
+        #Assert
         self.assertIsInstance(instructorList,list)
 
     def test_hire_instructor(self):
 
+        #Arrange
         instructor = Instructor("test","test","test","test","test")
         institution = Institution("Quinnipiac University", "qu.edu")
 
+        #Act
         institution.hire_instructor([instructor])
 
+        #Assert
         assert len(institution.faculty_list) == 1
 

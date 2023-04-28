@@ -27,7 +27,7 @@ class Test_Student(unittest.TestCase):
 
       #Act
       cc1.register_students = [student]
-      #total = course.credits
+      
       print(total)
       #Assert
       assert student.credits == 3
