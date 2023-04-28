@@ -1,6 +1,7 @@
 
 import pytest
 from instructor_def import Instructor
+from person_def import Person
 from course_def import Course
 from course_offering_def import CourseOffering
 
@@ -20,6 +21,7 @@ def test_List_Courses_WhenNoFiltersPresent_ReturnsCompleteList():
 
     # Assert
     assert len(returnedCourses) == len(courseOfferingList)
+    assert instructor.username == "test"
 
 def test_List_Courses_WithYearFilter_ReturnsCompleteList():
 
@@ -33,10 +35,9 @@ def test_List_Courses_WithYearFilter_ReturnsCompleteList():
     instructor.course_list = courseOfferingList
 
     # Act
-    #returnedCourses = instructor.list_courses()
-    #returnedCourses = instructor.list_courses(quarter=2)
+    
     returnedCourses = instructor.list_courses(year="2023")
-    #returnedCourses = instructor.list_courses(year=2023, quarter=1)
+    
 
     # Assert
     assert len(returnedCourses) == len(courseOfferingList)

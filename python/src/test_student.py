@@ -21,14 +21,13 @@ class Test_Student(unittest.TestCase):
 
       #Arrange
       total = 0
-      student = student('test', 'test', 'school', '4/20/23', 'test')
-      course1 = Course("CSC", 375, "Cloud Computing", 3)
-      cc1 = CourseOffering(course1,"123","2023","1")
-      courseOfferings = [cc1]
-      student.course_list = courseOfferings
+      student = Student('test', 'test', 'school', '4/20/23', 'test')
+      course = Course("CSC", 375, "Cloud Computing", 3)
+      cc1 = CourseOffering(course,"123","2023","1")
 
       #Act
-      total = course1.credits
+      cc1.register_students = [student]
+      #total = course.credits
       print(total)
       #Assert
       assert student.credits == 3
