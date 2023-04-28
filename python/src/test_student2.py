@@ -24,3 +24,12 @@ class Test_Student2(unittest.TestCase):
         print(calCredit)
         
         assert calCredit == 3
+
+    def test_list_courses(self):
+
+        student = Student('test', 'test', 'school', '4/20/23', 'test')
+        course = Course("CSC", 375, "Cloud Computing", 3)
+        cc1 = CourseOffering(course,"123","2023","1")
+
+        courseList = student.list_courses()
+        assert student.list_courses == courseList
